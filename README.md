@@ -2,7 +2,7 @@
 
 Welcome to my Embedded Firmware Engineering Portfolio!
 
-I am an Embedded Firmware Engineer with 6+ years of experience in embedded systems development.
+I am an Embedded Firmware Engineer with 10+ years of experience in embedded systems development.
 
 This repository documents my technical learning, engineering implementations, firmware experiments, debugging experiences, and embedded system design concepts.
 
