@@ -17,11 +17,23 @@ void modify_uart_data(uint8_t *buffer, size_t length)
 
 void modify_uart_data(uint8_t *buffer, size_t length)
 {
+    if (buffer == NULL)
+    {
+        printf("ERROR: NULL buffer pointer!\n");
+        return;
+    }
+    
+    if (length > UART_BUFFER_SIZE)
+    {
+        printf("ERROR: Invalid UART buffer length!\n");
+        return;
+    }
+
     for (size_t i = 0; i < length; i++)
     {
         if (buffer[i] >= 'a' && buffer[i] <= 'z')
         {
-            buffer[i] = buffer[i] - 32;
+            buffer[i] = buffer[i] - ('a' - 'A'); // ('a' - 'A') = 32;
         }
     }
 }
@@ -42,7 +54,7 @@ int main(void)
         'h', 'e', 'l', 'l', 'o', ' ', '1', '2', '3'
     };
 
-    size_t received_length = 9;
+    size_t received_length = 9; // = 120; // for boundry test commented
 
     printf("Before modification:\n");
 
@@ -54,6 +66,7 @@ int main(void)
     
     printf("\n");
     
+    //modify_uart_data(NULL, received_length);// for NULL Pointer test commented
     modify_uart_data(rx_buffer, received_length);
     
     printf("\nAfter modification:\n");
